@@ -1,5 +1,6 @@
 # AS-DMF：A Lightweight TLS encrypted traffic detection framework
-Authors:   
+原作者的`Readme.md`如下
+
 ## Contents
 - [Introduction](#Introduction)
 - [Setup](#Setup)
@@ -30,14 +31,14 @@ python >= 3.7
 linux >= Ubuntu 20.04
 zeek(LST) >= 4.0+
 wireshark
-```  
+```
 2. Basic Dependencies
 ```
 scikit-learn
 zat
 zeek-flowmeter
 alipy
-```  
+```
 3. Others  
 For other packets used in the experiment, please refer to _impot.txt_
 ## Dataset and feature extraction
@@ -73,7 +74,7 @@ According to the characteristics of the extracted features, Random Forest classi
 <div align="center">
 <img src=https://github.com/Timeless-zfqi/AS-DMF-framework/blob/main/Figure/stacking.jpg width=50% />
 </div>  
-  
+
 ### Implement your own algorithm  
 In DMF classifier, there is no limitation for your implementation. All you need is ensure all models have the ability to output probability. Among them {pipe1, pipe2, pipe3, meta_classifier}  
 ```python
@@ -87,7 +88,7 @@ def model(num):
 
     stack = StackingClassifier(classifiers=[pipe1,pipe2,pipe3], meta_classifier=LogisticRegression(solver="lbfgs"))
 return stack
-```  
+```
 ## Query and training  
 After completing the modeling, you can quickly build an AS-DMF query framework using the Toolbox tool in the ALiPy package. The framework uses a pool-based active learning approach and a specific query strategy for querying, labeling and training. You need to pre-set a labeled training set L and a large pool of unlabeled samples U. The sample size of L and U can be set by yourself.  
 ```python
@@ -145,7 +146,7 @@ analyser = alibox.get_experiment_analyser(x_axis='num_of_queries')
 analyser.add_method(method_name='QBC', method_results=QBC_result)
 print(analyser)
 analyser.plot_learning_curves(title='Example of AL', std_area=True)
-```  
+```
 ## Acknowledgement
 Thanks for these awesome resources that were used during the development of the AS-DMF framework：  
 * https://www.stratosphereips.org/datasets-ctu13
